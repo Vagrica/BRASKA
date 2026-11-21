@@ -1,3 +1,4 @@
 a = "Hello Kiko"
 b = "Hello Cypo"
-print(a," ",b)
+c = "Sme na branci vyhladavanie"
+print(a," ",b,c)
