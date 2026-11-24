@@ -28,14 +28,41 @@ def input_output(): #Funkcia pre vytvorenie novych slov pre slovnik
         inp_canvas.pack()
 
         #nove slovo Grafika
-        inp_canvas.create_text(200,30,text="Pridaj Nové Slovo",font=("Helvetica 18 bold"),fill="white")
+        inp_canvas.create_text(200,30,text="Pridaj Nové Slovo",font=("Helvetica 24 bold"),fill="white")
+        #nove slovo input
+        #SK Input
+        inp_canvas.create_text(40,90,text="SK",font=("Helvetica 18 bold"),fill="white")
+        Sk_input_txt = Entry(inp_canvas,width=16,font=("Helvetica 22 bold"))
+        inp_canvas.create_window(200,90,window=Sk_input_txt)
 
-        def input_zatvoreni(): #Pri stlaceni x na okne
+        #BR Input
+        inp_canvas.create_text(40,180,text="BR",font=("Helvetica 18 bold"),fill="white")
+        Br_input_txt = Entry(inp_canvas,width=16,font=("Helvetica 22 bold"))
+        inp_canvas.create_window(200,180,window=Br_input_txt)
+
+        #VYSLOVNOST
+        inp_canvas.create_text(40,270,text="VYS",font=("Helvetica 18 bold"),fill="white")
+        Vys_input_txt = Entry(inp_canvas,width=16,font=("Helvetica 22 bold"))
+        inp_canvas.create_window(200,270,window=Vys_input_txt)
+
+        #Odoslat
+        def odos_slovo():
+            Sk_input = Sk_input_txt.get()
+            Br_input = Br_input_txt.get()
+            Vys_input = Vys_input_txt.get()
+
+            print("Sk_input: ",Sk_input,",Br_Input: ",Br_input,",Vyslovnost: ",Vys_input)
+                
+        Odos_input = Button(inp_canvas,text="Odoslať",width=10,height=2,font=("Helvetica 10 bold"),command=odos_slovo)
+        inp_canvas.create_window(200,350,window=Odos_input)
+        
+
+        def input_zatvoreni(): #Pri stlaceni x na okne funkcia pre zatvorenie
             global inp_otvorene,Inp_window
             inp_otvorene = False
             inp_window.destroy()
         inp_window.protocol("WM_DELETE_WINDOW",input_zatvoreni)
-
+#KONIEC FUNKCIE INPUT OUTPUT
 
 #Tlacitka
 f_index = Button(canvas, text = "Full\nIndex", width= 8, height= 3,bg="#d3d3d3", #Zobrazenie celeho Indexu,momentalne nefunkcne
@@ -50,7 +77,7 @@ prepojenia = Button(canvas, text = "Prepojenia", width= 8, height= 3,bg="#d3d3d3
                  fg="black",activebackground="#828283",activeforeground="white",borderwidth=0,font=("Helvetica 8 bold"))
 canvas.create_window(45,200,anchor='nw',window=prepojenia)
 
-wordInput = Button(canvas, text = "nove\nslovo", width= 8, height= 3,bg="#d3d3d3", #Zobrazenie okna nove slovo,momentalne nefunkcne
+wordInput = Button(canvas, text = "nove\nslovo", width= 8, height= 3,bg="#d3d3d3", #Zobrazenie okna nove slovo
                  fg="black",activebackground="#828283",activeforeground="white",borderwidth=0,font=("Helvetica 8 bold"),command=input_output)
 canvas.create_window(45,290,anchor='nw',window=wordInput)
 
